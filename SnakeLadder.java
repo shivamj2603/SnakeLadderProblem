@@ -1,56 +1,72 @@
 public class SnakeLadder {
+	    static boolean turndecider=true;
+	    public static int playDice (int position,String Player)
+	    {
+	    	       final int NO_PLAY=0;
+		           final int LADDER=1;
+		           final int SNAKE=2;  
+		       
+	    	       int  die = (int) ( Math.floor(Math.random()*6) + 1);
+	    	       int option=(int) Math.floor(Math.random()*3);
+                       switch(option) {
+                
+                          case NO_PLAY:
+                          break;
+                
+                          case LADDER:
+                          position=position + die;
+                          if(position>100)
+                          {
+                             position=position - die;
+                          }
+                          playDice (position,Player);
+                          break;
+                
+                          case SNAKE:
+                          position=position - die;
+                          if(position<0)
+                          {
+                             position=0;
+                          }
+                          break;
+                       }
+                       System.out.println("Position of "+ Player +" "+ position);
+                       return position;
+	    }
+  
+            public static void main(String[] args)
+		{
+		          
+		       int positionOfP1=0;
+		       int positionOfP2=0;
+		       while(positionOfP1<100 && positionOfP2<100) {
 
-		public static void main(String[] args)
-		{      
+
+                       if(turndecider) {
 
 
-                       //constants
-                       final int NO_PLAY=0;
-		       final int LADDER=1;
-		       final int SNAKE=2;   
-                        
+            	          positionOfP1=playDice(positionOfP1,"Player1");
+                       }
+                       else
+                       {
+            	          positionOfP2=playDice(positionOfP2,"Player2");
+                       }
+		           turndecider=!turndecider;
+		       }
+		       if(positionOfP1==100)
+		       {
+		    	   System.out.println("Player1 wins");
+		       }
+		       else
+		       {
+		    	   System.out.println("Player2 wins");
+		       }
 
-                       //variables
-		       int position=0;
-		       int countOfDieRoll=0;
-                       int die=0;
-                       int option=0;
-
-                       do{
-
-                         die = (int) ( Math.floor(Math.random()*6) + 1);
-                         countOfDieRoll++;
-                         option=(int) Math.floor(Math.random()*3);
-		            switch(option) {
-		                
-		                case NO_PLAY:
-		                break;
-		                
-		                case LADDER:
-		                position=position + die;
-                                if(position>100)
-		                {
-		                    position=position-die;
-		                }
-		                break;
-		                
-		                case SNAKE:
-		                position=position - die;
-                                if(position<0)
-		                {
-		                    position=0;
-		                }
-                                break;
-                            
-                            }
-
-                            System.out.println("Position:" + position);
-
-                        }while(position!=100); 
-
-                       System.out.println("Number of times the dice was rolled:" + countOfDieRoll);
-
-             
 		}
+		        
 
 }
+		    
+
+
+                      
