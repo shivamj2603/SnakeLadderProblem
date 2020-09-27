@@ -16,9 +16,10 @@ public class SnakeLadder {
                        int die=0;
                        int option=0;
 
+                       do{
 
-                       die = (int) ( Math.floor(Math.random()*6) + 1);
-                       option=(int) Math.floor(Math.random()*3);
+                         die = (int) ( Math.floor(Math.random()*6) + 1);
+                         option=(int) Math.floor(Math.random()*3);
 		            switch(option) {
 		                
 		                case NO_PLAY:
@@ -30,9 +31,14 @@ public class SnakeLadder {
 		                
 		                case SNAKE:
 		                position=position - die;
-		                break;
+                                if(position<0)
+		                {
+		                    position=0;
+		                }
+                                break;
                             
                             }
+                        }while(position!=100); 
              
 		}
 
