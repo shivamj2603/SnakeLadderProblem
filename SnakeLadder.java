@@ -19,6 +19,7 @@ public class SnakeLadder {
                        do{
 
                          die = (int) ( Math.floor(Math.random()*6) + 1);
+                         countOfDieRoll++;
                          option=(int) Math.floor(Math.random()*3);
 		            switch(option) {
 		                
@@ -42,7 +43,13 @@ public class SnakeLadder {
                                 break;
                             
                             }
+
+                            System.out.println("Position:" + position);
+
                         }while(position!=100); 
+
+                       System.out.println("Number of times the dice was rolled:" + countOfDieRoll);
+
              
 		}
 
