@@ -19,7 +19,10 @@ public class SnakeLadder {
                           {
                              position=position - die;
                           }
+                          if(position!=100)
+                          {
                           playDice (position,Player);
+                          }
                           break;
                 
                           case SNAKE:
